@@ -1,0 +1,34 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int T;
+    int N;
+    cin>>T;
+    int i,j;
+    
+    long long n,m,c;
+    for(i=1;i<=T;i++)
+    {
+        cin>>N;
+        long long arr[N];
+        for(j=0;j<N;j++)
+        cin>>arr[j];
+        c=0;
+        
+        if(N<64)
+        
+        {   n=pow(2,N-1);
+        m=pow(2,N);
+            for(j=0;j<N;j++)
+        {
+            if(arr[j]>=m-n)
+            c=((c+arr[j])%1000000007)%1000000007;
+        }
+        cout<<c<<endl;
+        }
+        else
+        cout<<0<<endl;
+    }   
+    return 0;
+}
