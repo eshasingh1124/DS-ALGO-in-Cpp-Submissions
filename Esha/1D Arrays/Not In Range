@@ -1,0 +1,40 @@
+#include<bits/stdc++.h>
+using namespace std;
+ 
+long long NotinRange (int* R, int* L, int n ) {
+   long long total = 0;
+   
+   pair<int , int > pairt[n];
+   for(int i = 0; i < n; i++){
+   pairt[i].first = L[i];
+   pairt[i].second = R[i];
+   }
+   
+   sort(pairt, pairt+n);
+ 
+   for (int i = 1, j = 0; i <= 1000000; i++)
+   {
+      if (j < n && i >= pairt[j].first && i <= pairt[j].second){
+         i = pairt[j].second;
+         j++;
+      }
+      else{
+         total += i;
+      }
+ 
+   }
+   return total;
+}
+ 
+int main() {
+    
+
+    int n;
+    cin>>n;
+    int L[n],R[n];
+    for(int i=0; i<n; i++)
+    	cin>>L[i]>>R[i];
+    
+    long long out_ = NotinRange(R, L, n);
+    cout<<out_;
+}
