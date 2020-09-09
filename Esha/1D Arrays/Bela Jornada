@@ -1,0 +1,40 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+    long long int N;
+    long long int A[100000];
+    long long int B[100000];
+    long long int sum=0;
+    cin>>N;
+    long long int max;
+    long long int temp_max;
+    for(long long int i=0;i<N;i++)
+    {
+        cin>>A[i];
+        
+        if(i==0)
+        {
+            B[0]=A[0];
+            sum=A[0];        
+        }
+        if(i>0 && i<N-1)
+        {
+            B[i]=A[i]+B[i-1];
+            sum+=A[i];
+        }    
+        if(i==N-1)
+        {
+            sum+=A[N-1];
+        }
+    }
+    max=(B[0]*(sum-B[0]));
+    for(long long int i=0;i<N;i++)
+    {
+        temp_max=(B[i]*(sum-B[i]));
+        if(temp_max>max)
+        max=temp_max;
+    }
+    cout<<max; 
+return 0;
+}
