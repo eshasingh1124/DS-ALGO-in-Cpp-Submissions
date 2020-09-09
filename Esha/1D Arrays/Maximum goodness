@@ -1,0 +1,35 @@
+#include<bits/stdc++.h>
+using namespace std;
+ 
+int calculateAnswer(int arr[], int n){
+    int f_size=0, max_till_now = INT_MIN, max_end=0, i, temp_index=0, value;
+    for(i=0;i<n;i++){
+        value = arr[i]==1 ? 1 : -1;
+        max_end = max_end + value;
+        ++temp_index;
+        if(max_end >= max_till_now){
+            max_till_now = max_end;
+            if(temp_index>f_size){
+                f_size = temp_index;
+            }
+        }
+ 
+        if(max_end<0){
+            max_end = 0;
+            temp_index = 0;
+        }
+    } 
+    return f_size;
+}
+ 
+ 
+int main(){
+    int n;
+    cin>>n;
+    int arr[n];
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    int answer = calculateAnswer(arr,n);
+    cout<<answer;
+}
